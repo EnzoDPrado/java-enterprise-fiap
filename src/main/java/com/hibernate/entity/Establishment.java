@@ -13,8 +13,7 @@ public class Establishment {
     @Column(nullable = false,length =100)
     private String name;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_contract")
+    @OneToOne(mappedBy = "establishment")
     private Contract contract;
 
     public Establishment() {}
