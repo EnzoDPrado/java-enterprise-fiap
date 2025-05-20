@@ -2,9 +2,9 @@
              version="3.0">
     <persistence-unit name="testePersistence">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>com.hibernate.entity.Product</class>
+        <class>com.hibernate.entity.Client</class>
         <properties>
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://172.20.182.100:5432/hibernate"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/hibernate"/>
             <property name="jakarta.persistence.jdbc.user" value="root"/>
             <property name="jakarta.persistence.jdbc.password" value="123"/>
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
