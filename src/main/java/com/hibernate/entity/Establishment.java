@@ -16,6 +16,10 @@ public class Establishment {
     @OneToOne(mappedBy = "establishment")
     private Contract contract;
 
+    @ManyToOne
+    @JoinColumn(name = "id_type_establishment")
+    private TypeEstablishment type;
+
     public Establishment() {}
 
     public Establishment(int id, String name) {
