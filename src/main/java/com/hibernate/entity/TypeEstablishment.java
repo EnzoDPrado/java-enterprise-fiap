@@ -2,6 +2,8 @@ package com.hibernate.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="tb_type_establishment")
 public class TypeEstablishment {
@@ -13,11 +15,23 @@ public class TypeEstablishment {
     @Column(nullable = false,length =100)
     private String name;
 
+    @OneToMany(mappedBy = "type")
+    private List<Establishment> establishments;
+
     public TypeEstablishment() {}
 
-    public TypeEstablishment(int id, String name) {
+    public TypeEstablishment(int id, String name, List<Establishment> establishments) {
         this.id = id;
         this.name = name;
+        this.establishments = establishments;
+    }
+
+    public List<Establishment> getEstablishments() {
+        return establishments;
+    }
+
+    public void setEstablishments(List<Establishment> establishments) {
+        this.establishments = establishments;
     }
 
     public int getId() {

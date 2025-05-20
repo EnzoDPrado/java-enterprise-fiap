@@ -22,9 +22,27 @@ public class Establishment {
 
     public Establishment() {}
 
-    public Establishment(int id, String name) {
+    public Establishment(int id, String name, Contract contract, TypeEstablishment type) {
         this.id = id;
         this.name = name;
+        this.contract = contract;
+        this.type = type;
+    }
+
+    public Contract getContract() {
+        return contract;
+    }
+
+    public void setContract(Contract contract) {
+        this.contract = contract;
+    }
+
+    public TypeEstablishment getType() {
+        return type;
+    }
+
+    public void setType(TypeEstablishment type) {
+        this.type = type;
     }
 
     public int getId() {
