@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name="tb_type_establishment")
-public class TypeEstablishment {
+public class Client {
     @Id
     @SequenceGenerator(name="type_establishment", sequenceName="sq_tb_type_establishment",allocationSize=1)
     @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="type_establishment")
@@ -15,12 +15,12 @@ public class TypeEstablishment {
     @Column(nullable = false,length =100)
     private String name;
 
-    @OneToMany(mappedBy = "type")
+    @ManyToMany(mappedBy = "clients")
     private List<Establishment> establishments;
 
-    public TypeEstablishment() {}
+    public Client() {}
 
-    public TypeEstablishment(int id, String name, List<Establishment> establishments) {
+    public Client(int id, String name, List<Establishment> establishments) {
         this.id = id;
         this.name = name;
         this.establishments = establishments;

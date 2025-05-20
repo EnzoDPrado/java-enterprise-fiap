@@ -2,6 +2,8 @@ package com.hibernate.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="tb_establishment")
 public class Establishment {
@@ -13,20 +15,47 @@ public class Establishment {
     @Column(nullable = false,length =100)
     private String name;
 
-    @OneToOne(mappedBy = "establishment")
+    @OneToOne(mappedBy = "establishment", cascade = CascadeType.PERSIST)
     private Contract contract;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_type_establishment")
     private TypeEstablishment type;
 
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name = "tb_establishment_client",
+            joinColumns = @JoinColumn(name = "id_establishment"),
+            inverseJoinColumns = @JoinColumn(name = "id_client")
+    )
+
+    private List<Client> clients;
+
     public Establishment() {}
 
-    public Establishment(int id, String name, Contract contract, TypeEstablishment type) {
+    public Establishment(int id, String name, Contract contract, TypeEstablishment type, List<Client> clients) {
         this.id = id;
         this.name = name;
         this.contract = contract;
         this.type = type;
+        this.clients = clients;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Contract getContract() {
@@ -45,19 +74,11 @@ public class Establishment {
         this.type = type;
     }
 
-    public int getId() {
-        return id;
+    public List<Client> getClients() {
+        return clients;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setClients(List<Client> clients) {
+        this.clients = clients;
     }
 }

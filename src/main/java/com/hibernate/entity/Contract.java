@@ -24,9 +24,27 @@ public class Contract {
 
     public Contract() {}
 
-    public Contract(Double value, LocalDateTime expirationDate) {
+    public Contract(int id, Double value, LocalDateTime expirationDate, Establishment establishment) {
+        this.id = id;
         this.value = value;
         this.expirationDate = expirationDate;
+        this.establishment = establishment;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Double getValue() {
+        return value;
+    }
+
+    public void setValue(Double value) {
+        this.value = value;
     }
 
     public LocalDateTime getExpirationDate() {
@@ -37,11 +55,11 @@ public class Contract {
         this.expirationDate = expirationDate;
     }
 
-    public int getId() {
-        return id;
+    public Establishment getEstablishment() {
+        return establishment;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setEstablishment(Establishment establishment) {
+        this.establishment = establishment;
     }
 }
