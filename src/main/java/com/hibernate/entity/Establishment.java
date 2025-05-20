@@ -1,25 +1,25 @@
 package com.hibernate.entity;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
-import java.util.Calendar;
 
 @Entity
-@Table(name="tb_client")
-public class Client {
+@Table(name="tb_establishment")
+public class Establishment {
     @Id
-    @SequenceGenerator(name="client", sequenceName="sq_tb_client",allocationSize=1)
-    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="client")
+    @SequenceGenerator(name="establishment", sequenceName="sq_tb_establishment",allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="establishment")
     private int id;
 
     @Column(nullable = false,length =100)
     private String name;
 
-    public Client() {}
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_contract")
+    private Contract contract;
 
-    public Client(int id, String name) {
+    public Establishment() {}
+
+    public Establishment(int id, String name) {
         this.id = id;
         this.name = name;
     }
