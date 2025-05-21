@@ -1,24 +1,21 @@
 package com.hibernate.entity;
 
-import jakarta.persistence.*;
+import java.io.Serializable;
 
-@Entity
-@Table(name="client")
-@Inheritance(strategy = InheritanceType.JOINED)
-public class Client {
-    @Id
-    @SequenceGenerator(name="type_client", sequenceName="sq_client",allocationSize=1)
-    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="type_client")
-    private int id;
+public class Client implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-    @Column(nullable = false,length =100)
     private String name;
 
-    public Client() {}
+    private int id;
 
-    public Client(int id, String name) {
-        this.id = id;
+    public Client() {
+        super();
+    }
+
+    public Client(String name, int id) {
         this.name = name;
+        this.id = id;
     }
 
     public int getId() {
