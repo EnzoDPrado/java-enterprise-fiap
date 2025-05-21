@@ -5,11 +5,11 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="tb_type_establishment")
+@Table(name="tb_client")
 public class Client {
     @Id
-    @SequenceGenerator(name="type_establishment", sequenceName="sq_tb_type_establishment",allocationSize=1)
-    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="type_establishment")
+    @SequenceGenerator(name="client", sequenceName="sq_tb_client",allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="client")
     private int id;
 
     @Column(nullable = false,length =100)
